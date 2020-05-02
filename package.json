@@ -1,0 +1,45 @@
+{
+  "name": "harper2.0",
+  "version": "1.0.0",
+  "description": "A refactorized version of Harper",
+  "main": "index.js",
+  "scripts": {
+    "service": "nodemon --exec babel-node -r dotenv/config src/index",
+    "build": "babel src -d lib",
+    "start": "node -r dotenv/config lib/index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnthonyLzq/Harper-backend-2.0.git"
+  },
+  "keywords": [
+    "ACECOM",
+    "Harper"
+  ],
+  "author": "AnthonyLzq",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AnthonyLzq/Harper-backend-2.0/issues"
+  },
+  "homepage": "https://github.com/AnthonyLzq/Harper-backend-2.0#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.9.11",
+    "restify": "^8.5.1",
+    "restify-router": "^0.5.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.6",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-sort-keys-fix": "^1.1.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "nodemon": "^2.0.3"
+  }
+}
