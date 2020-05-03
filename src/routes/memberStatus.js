@@ -5,11 +5,15 @@ const router = new Router()
 const ms = new MemberStatus()
 
 router.get('/memberStatus', (req, res, next) => {
-  res.send('This is the endpoint that returns the member status data.')
+  res.send({
+    message: 'This is the endpoint that returns the member status data.'
+  })
 })
 
 router.post('/memberStatus', async (req, res, next) => {
-  const { body: { args } } = req
+  const {
+    body: { args }
+  } = req
 
   try {
     const result = await ms.process(args)

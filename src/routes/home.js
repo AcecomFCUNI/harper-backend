@@ -3,7 +3,7 @@ const router = new Router()
 
 router.get('', (req, res, next) => {
   res.json({
-    message: 'Welcome to the new version of HARPER'
+    message: 'Welcome to the new version of HARPER.'
   })
 })
 

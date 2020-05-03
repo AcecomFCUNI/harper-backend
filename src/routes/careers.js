@@ -5,11 +5,15 @@ const router = new Router()
 const c = new Careers()
 
 router.get('/careers', (req, res, next) => {
-  res.send('This is the endpoint to upload the careers in the database')
+  res.send({
+    message: 'This is the endpoint to upload the careers in the database.'
+  })
 })
 
 router.post('/careers', async (req, res, next) => {
-  const { body: { args } } = req
+  const {
+    body: { args }
+  } = req
 
   try {
     let result = await c.process(args)

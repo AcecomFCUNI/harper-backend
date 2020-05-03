@@ -3,6 +3,7 @@ import { Router } from 'restify-router'
 import { Home } from './routes/home'
 import { Careers } from './routes/careers'
 import { MemberStatus } from './routes/memberStatus'
+import { DataArea } from './routes/dataArea'
 
 import { db } from './database/mongo/connection/index'
 
@@ -13,7 +14,9 @@ const router = new Router()
 router.add('/', Home)
 router.add('/api', Careers)
 router.add('/api', MemberStatus)
+router.add('/api', DataArea)
 router.applyRoutes(server)
+
 server.use(restify.plugins.bodyParser())
 
 server.listen(PORT, () => {

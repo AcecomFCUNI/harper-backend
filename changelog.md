@@ -20,3 +20,10 @@
 - Updated:
   - [Documentation](./readme.md).
   - New rule for the [`eslint file`](./.eslintrc.json), `newline-before-return`.
+
+## Version 2.2.0
+
+- Implemented:
+  - One endpoint to store new dataArea or get them according to the [documentation](./readme.md).
+- Updated:
+  - [Documentation](./readme.md).

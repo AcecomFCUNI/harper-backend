@@ -10,11 +10,14 @@ const DataArea = new Schema(
       type    : String
     },
     code: {
-      default: 0,
+      default: 1,
       type   : Number
     },
-    image: String,
-    name : {
+    image: {
+      default: '',
+      type   : String
+    },
+    name: {
       required: true,
       type    : String,
       unique  : true
