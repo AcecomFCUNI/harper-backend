@@ -2,8 +2,9 @@ import restify from 'restify'
 import { Router } from 'restify-router'
 import { Home } from './routes/home'
 import { Careers } from './routes/careers'
+import { MemberStatus } from './routes/memberStatus'
 
-import { db } from './database/connection/index'
+import { db } from './database/mongo/connection/index'
 
 const PORT = process.env.PORT
 const server = restify.createServer()
@@ -11,6 +12,7 @@ const router = new Router()
 
 router.add('/', Home)
 router.add('/api', Careers)
+router.add('/api', MemberStatus)
 router.applyRoutes(server)
 server.use(restify.plugins.bodyParser())
 

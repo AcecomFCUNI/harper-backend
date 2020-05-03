@@ -16,6 +16,7 @@
   },
   "plugins": ["sort-keys-fix"],
   "rules": {
+    "newline-before-return": "error",
     "sort-keys-fix/sort-keys-fix": "warn",
     "curly": ["error", "multi"],
     "sort-keys": "error",

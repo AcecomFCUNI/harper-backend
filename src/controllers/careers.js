@@ -56,7 +56,7 @@ class Careers {
       const careers = await CareersModel.find({})
 
       return careers
-    } catch (error) {
+    } catch (err) {
       throw new Error('There was an error trying to get all the careers')
     }
   }

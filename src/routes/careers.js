@@ -33,10 +33,10 @@ router.post('/careers', async (req, res, next) => {
           name: result.name
         }
       })
-  } catch (error) {
+  } catch (err) {
     res.send({
       error  : true,
-      message: error.message
+      message: err.message
     })
   }
 })

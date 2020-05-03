@@ -30,6 +30,7 @@ const DataMembers = new Schema(
       type    : String,
       unique  : true
     }],
+    git     : String,
     key     : Boolean,
     lastName: {
       required: true,
