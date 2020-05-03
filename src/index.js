@@ -1,15 +1,27 @@
 import restify from 'restify'
 import { Router } from 'restify-router'
 import { Home } from './routes/home'
+import { Careers } from './routes/careers'
+
+import { db } from './database/connection/index'
 
 const PORT = process.env.PORT
 const server = restify.createServer()
 const router = new Router()
 
 router.add('/', Home)
+router.add('/api', Careers)
 router.applyRoutes(server)
 server.use(restify.plugins.bodyParser())
 
 server.listen(PORT, () => {
   console.log(`Server running at port ${PORT}`)
+})
+
+db.on('error', () => {
+  console.log('There was an error while connecting to the database')
+})
+
+db.once('open', () => {
+  console.log('We are connected to the database!')
 })
