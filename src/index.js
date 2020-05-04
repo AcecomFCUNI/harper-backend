@@ -4,6 +4,7 @@ import { Home } from './routes/home'
 import { Careers } from './routes/careers'
 import { MemberStatus } from './routes/memberStatus'
 import { DataArea } from './routes/dataArea'
+import { DataMembers } from './routes/dataMembers'
 
 import { db } from './database/mongo/connection/index'
 
@@ -15,6 +16,7 @@ router.add('/', Home)
 router.add('/api', Careers)
 router.add('/api', MemberStatus)
 router.add('/api', DataArea)
+router.add('/api', DataMembers)
 router.applyRoutes(server)
 
 server.use(restify.plugins.bodyParser())

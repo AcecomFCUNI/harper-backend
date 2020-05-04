@@ -8,11 +8,11 @@ class Careers {
       case 'store':
         result = this.store(data)
         break
-      case 'getOne':
-        result = this.getOne(data)
-        break
       case 'getAll':
         result = this.getAll()
+        break
+      case 'getOne':
+        result = this.getOne(data)
     }
 
     return result
@@ -33,24 +33,6 @@ class Careers {
     }
   }
 
-  async getOne (args) {
-    const { code } = args
-
-    try {
-      const career = await CareersModel.findOne({ code: { $eq: code } })
-
-      if(!career) throw new Error('The requested career doesn\'t exists.')
-
-      return career
-    } catch (err) {
-      if(err.message) throw err
-
-      throw new Error(
-        'There was a problem trying to get the requested career'
-      )
-    }
-  }
-
   async getAll () {
     try {
       const careers = await CareersModel.find({})
@@ -58,6 +40,25 @@ class Careers {
       return careers
     } catch (err) {
       throw new Error('There was an error trying to get all the careers')
+    }
+  }
+
+  async getOne (args) {
+    const { code } = args
+
+    try {
+      const career = await CareersModel.findOne(
+        { code: { $eq: code } },
+        { __v: false }
+      )
+
+      if(!career) throw new Error("The requested career doesn't exists.")
+
+      return career
+    } catch (err) {
+      if(err.message) throw err
+
+      throw new Error('There was a problem trying to get the requested career')
     }
   }
 }

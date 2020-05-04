@@ -47,7 +47,10 @@ class MemberStatus {
     const { name } = args
 
     try {
-      const result = await MemberStatusModel.find({ name: { $eq: name } })
+      const result = await MemberStatusModel.find(
+        { name: { $eq: name } },
+        { __v: false }
+      )
 
       if(!result)
         throw new Error("The requested member status doesn't exist.")

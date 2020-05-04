@@ -27,3 +27,15 @@
   - One endpoint to store new dataArea or get them according to the [documentation](./readme.md).
 - Updated:
   - [Documentation](./readme.md).
+
+## Version 2.3.0
+
+- Implemented:
+  - One endpoint to store new dataMembers or get them according to the [documentation](./readme.md).
+- Updated:
+  - [Documentation](./readme.md).
+
+## Version 2.3.0a
+
+- Fixed:
+  - `key` as parameter to insert and update a member.

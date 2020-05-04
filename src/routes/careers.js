@@ -33,6 +33,7 @@ router.post('/careers', async (req, res, next) => {
       res.send({
         error : false,
         result: {
+          _id : result._id,
           code: result.code,
           name: result.name
         }
