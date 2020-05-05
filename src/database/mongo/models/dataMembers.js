@@ -45,8 +45,8 @@ const DataMembers = new Schema(
       unique: true
     }],
     photo: {
-      type  : String,
-      unique: true
+      default: '',
+      type   : String
     },
     status: {
       ref : 'MemberStatus',

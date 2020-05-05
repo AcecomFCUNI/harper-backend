@@ -39,3 +39,10 @@
 
 - Fixed:
   - `key` as parameter to insert and update a member.
+
+## Version 2.4.0
+
+- Implemented:
+  - One endpoint to store new projects or get them according to the [documentation](./readme.md).
+- Updated:
+  - [Documentation](./readme.md).
