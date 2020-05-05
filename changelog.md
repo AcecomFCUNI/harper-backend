@@ -46,3 +46,9 @@
   - One endpoint to store new projects or get them according to the [documentation](./readme.md).
 - Updated:
   - [Documentation](./readme.md).
+
+## Version 2.5.0
+
+- Implemented:
+  - `lib` folder. It is the folder that contains the project ready to deploy.
+  - `.eslintignore` to ignore `lib` folder.
