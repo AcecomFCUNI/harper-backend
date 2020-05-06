@@ -1,4 +1,6 @@
 import restify from 'restify'
+import corsMiddleware from 'restify-cors-middleware'
+
 import { Router } from 'restify-router'
 import { Home } from './routes/home'
 import { Careers } from './routes/careers'
@@ -12,6 +14,7 @@ import { db } from './database/mongo/connection/index'
 const PORT = process.env.PORT
 const server = restify.createServer()
 const router = new Router()
+const cors = corsMiddleware({ origins: ['*'] })
 
 router.add('/', Home)
 router.add('/api', Careers)
@@ -21,6 +24,8 @@ router.add('/api', DataMembers)
 router.add('/api', Projects)
 router.applyRoutes(server)
 
+server.pre(cors.preflight)
+server.use(cors.actual)
 server.use(restify.plugins.bodyParser())
 
 server.listen(PORT, () => {

@@ -1,6 +1,6 @@
 {
   "name": "harper2.0",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "description": "A refactorized version of Harper",
   "main": "index.js",
   "scripts": {
@@ -27,6 +27,7 @@
     "mongoose": "^5.9.11",
     "mongoose-unique-validator": "^2.0.3",
     "restify": "^8.5.1",
+    "restify-cors-middleware": "^1.1.1",
     "restify-router": "^0.5.1"
   },
   "devDependencies": {

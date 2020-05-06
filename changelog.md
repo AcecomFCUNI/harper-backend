@@ -52,3 +52,8 @@
 - Implemented:
   - `lib` folder. It is the folder that contains the project ready to deploy.
   - `.eslintignore` to ignore `lib` folder.
+
+## Version 2.6.0
+
+- Implemented:
+  - `restify-cors-middleware` module, to allow request from everywhere.
