@@ -35,7 +35,10 @@ class MemberStatus {
 
   async getAll () {
     try {
-      const result = await MemberStatusModel.find({})
+      const result = await MemberStatusModel.find(
+        {},
+        { __v: false, _id: false }
+      )
 
       return result
     } catch (err) {
@@ -49,7 +52,7 @@ class MemberStatus {
     try {
       const result = await MemberStatusModel.find(
         { name: { $eq: name } },
-        { __v: false }
+        { __v: false, _id: false }
       )
 
       if(!result)

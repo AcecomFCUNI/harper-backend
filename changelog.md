@@ -57,3 +57,9 @@
 
 - Implemented:
   - `restify-cors-middleware` module, to allow request from everywhere.
+
+## Version 2.7.0
+
+- Implemented:
+  - `getMembersPerArea` method, to return the members per area.
+  - Now, the content is populated, and neither *_id* nor *__v* are delivered to the front.

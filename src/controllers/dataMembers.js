@@ -1,7 +1,10 @@
+import { CareersModel } from '../database/mongo/models/careers'
 import { DataMembersModel } from '../database/mongo/models/dataMembers'
+import { DataAreaModel } from '../database/mongo/models/dataArea'
+import { MemberStatusModel } from '../database/mongo/models/memberStatus'
+
 import { DataArea } from './dataArea'
 import { MemberStatus } from './memberStatus'
-import { Careers } from './careers'
 
 class DataMembers {
   process (args) {
@@ -12,11 +15,14 @@ class DataMembers {
       case 'store':
         result = this.store(data)
         break
-      case 'getOne':
-        result = this.getOne(data)
-        break
       case 'getAll':
         result = this.getAll()
+        break
+      case 'getMembersPerArea':
+        result = this.getMembersPerArea(data)
+        break
+      case 'getOne':
+        result = this.getOne(data)
         break
       case 'update':
         result = this.update(data)
@@ -42,15 +48,11 @@ class DataMembers {
       status
     } = args
 
-    const c = new Careers()
-    const da = new DataArea()
-    const ms = new MemberStatus()
-
     try {
       const data = await Promise.all([
-        c.getOne({ code: career }),
-        da.getOne({ name: area }),
-        ms.getOne({ name: status })
+        CareersModel.findOne({ code: { $eq: career } }),
+        DataAreaModel.findOne({ name: { $eq: area } }),
+        MemberStatusModel.findOne({ name: { $eq: status } })
       ])
 
       const careerId = data[0]._id
@@ -75,17 +77,75 @@ class DataMembers {
 
       return result
     } catch (err) {
+      console.log(err)
       throw new Error('There was an error trying to save a new member')
     }
   }
 
   async getAll () {
     try {
-      const result = await DataMembersModel.find({})
+      const members = await DataMembersModel.find({})
+        .populate({ path: 'area', select: 'name -_id' })
+        .populate({ path: 'career', select: 'code name -_id' })
+        .populate({ path: 'status', select: 'name -_id' })
+        .exec()
+
+      const result = members.map(member => {
+        return {
+          area    : member.area.name,
+          birthday: member.birthday,
+          career  : member.career,
+          code    : member.code,
+          email   : member.email[0],
+          git     : member.git,
+          key     : member.key,
+          lastName: member.lastName,
+          name    : member.name,
+          phone   : member.phone[0],
+          photo   : member.photo,
+          status  : member.status.name
+        }
+      })
 
       return result
-    } catch (error) {
+    } catch (err) {
       throw new Error('There was a problem trying to get all the members')
+    }
+  }
+
+  async getMembersPerArea (args) {
+    const { area } = args
+
+    try {
+      const areaId = await DataAreaModel.findOne({ name: area }, { _id: true })
+
+      const members = await DataMembersModel.find({ area: areaId._id })
+        .populate({ path: 'area', select: 'name -_id' })
+        .populate({ path: 'career', select: 'code name -_id' })
+        .populate({ path: 'status', select: 'name -_id' })
+        .exec()
+
+      const result = members.map(member => {
+        return {
+          area    : member.area.name,
+          birthday: member.birthday,
+          career  : member.career,
+          code    : member.code,
+          email   : member.email[0],
+          git     : member.git,
+          key     : member.key,
+          lastName: member.lastName,
+          name    : member.name,
+          phone   : member.phone[0],
+          photo   : member.photo,
+          status  : member.status.name
+        }
+      })
+
+      return result
+    } catch (err) {
+      console.log(err)
+      throw new Error('There was a problem while trying to get the data')
     }
   }
 
@@ -93,15 +153,30 @@ class DataMembers {
     const { code } = args
 
     try {
-      const result = await DataMembersModel.find(
+      const member = await DataMembersModel.findOne(
         { code: { $eq: code } },
         { __v: false }
       )
+        .populate({ path: 'area', select: 'name -_id' })
+        .populate({ path: 'career', select: 'code name -_id' })
+        .populate({ path: 'status', select: 'name -_id' })
 
-      if(result.length === 0)
-        throw new Error("The requested student doesn't exists.")
+      if(!member) throw new Error('The requested user doesn\'t exist.')
 
-      return result[0]
+      return {
+        area    : member.area.name,
+        birthday: member.birthday,
+        career  : member.career,
+        code    : member.code,
+        email   : member.email[0],
+        git     : member.git,
+        key     : member.key,
+        lastName: member.lastName,
+        name    : member.name,
+        phone   : member.phone[0],
+        photo   : member.photo,
+        status  : member.status.name
+      }
     } catch (err) {
       if(err.message) throw err
 

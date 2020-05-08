@@ -65,7 +65,7 @@ class DataArea {
     try {
       const result = await DataAreaModel.find(
         { name: { $eq: name } },
-        { __v: false }
+        { __v: false, _id: false }
       )
 
       if(!result) throw new Error("The requested area doesn't exist.")

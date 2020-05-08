@@ -17,7 +17,7 @@ class Projects {
         result = this.getOne(data)
         break
       case 'getProjectsPerArea':
-        result = this.getProjectPerArea(data)
+        result = this.getProjectsPerArea(data)
         break
       case 'update':
         result = this.update(data)
@@ -111,13 +111,44 @@ class Projects {
     const { area } = args
 
     try {
-      const result = await ProjectsModel.find(
-        { area: { $eq: area } },
-        { __v: false }
+      const areaId = await DataAreaModel.findOne(
+        { name: { $eq: area } },
+        { _id: true }
       )
 
-      return result
+      let projects = await ProjectsModel.find(
+        { area: { $eq: areaId } },
+        { __v: false }
+      )
+        .populate({
+          path  : 'participants',
+          select: 'name lastName code git -_id'
+        })
+        .populate({ path: 'area', select: 'name -_id' })
+        .exec()
+
+      projects = projects.map((project) => {
+        const participants = project.participants.map((participant) => {
+          return {
+            code    : participant.code,
+            fullName: `${participant.name} ${participant.lastName}`,
+            git     : participant.git || ''
+          }
+        })
+
+        return {
+          area       : project.area.name,
+          description: project.description,
+          name       : project.name,
+          participants,
+          repo       : project.repo,
+          topic      : project.topic
+        }
+      })
+
+      return projects
     } catch (err) {
+      console.log(err)
       throw new Error(
         'There was a problem while trying to get all the requested projects.'
       )

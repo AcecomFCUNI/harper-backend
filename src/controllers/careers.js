@@ -49,7 +49,7 @@ class Careers {
     try {
       const career = await CareersModel.findOne(
         { code: { $eq: code } },
-        { __v: false }
+        { __v: false, _id: true }
       )
 
       if(!career) throw new Error("The requested career doesn't exists.")

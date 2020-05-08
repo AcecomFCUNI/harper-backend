@@ -1,6 +1,6 @@
 {
   "name": "harper2.0",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "description": "A refactorized version of Harper",
   "main": "index.js",
   "scripts": {
