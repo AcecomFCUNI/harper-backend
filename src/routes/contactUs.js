@@ -16,12 +16,12 @@ router.post('/contactUs', async (req, res, next) => {
   try {
     const result = await cu.process(args)
 
-    res.send({
+    res.send(200, {
       error  : false,
       message: result
     })
   } catch (err) {
-    res.send({
+    res.send(500, {
       error  : true,
       message: err.message
     })

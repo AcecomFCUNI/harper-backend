@@ -63,3 +63,10 @@
 - Implemented:
   - `getMembersPerArea` method, to return the members per area.
   - Now, the content is populated, and neither *_id* nor *__v* are delivered to the front.
+
+## Version 2.8.0
+
+- Implemented:
+  - One endpoint to send a mail to ACECOM, according to the [documentation](./readme.md).
+- Updated:
+  - [Documentation](./readme.md).
