@@ -8,6 +8,7 @@ import { MemberStatus } from './routes/memberStatus'
 import { DataArea } from './routes/dataArea'
 import { DataMembers } from './routes/dataMembers'
 import { Projects } from './routes/projects'
+import { ContactUs } from './routes/contactUs'
 
 import { db } from './database/mongo/connection/index'
 
@@ -22,6 +23,7 @@ router.add('/api', MemberStatus)
 router.add('/api', DataArea)
 router.add('/api', DataMembers)
 router.add('/api', Projects)
+router.add('/api', ContactUs)
 router.applyRoutes(server)
 
 server.pre(cors.preflight)
