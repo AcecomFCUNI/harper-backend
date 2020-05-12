@@ -70,3 +70,11 @@
   - One endpoint to send a mail to ACECOM, according to the [documentation](./readme.md).
 - Updated:
   - [Documentation](./readme.md).
+
+## Version 2.9.0
+
+- Implemented:
+  - `Dockerfile`, `.dockerignore` and `heroku.yml` in order to deploy a container in `Heroku`.
+- Updated:
+  - [Documentation](./readme.md).
+  - `lib` folder.
