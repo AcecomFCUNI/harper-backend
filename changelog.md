@@ -78,3 +78,12 @@
 - Updated:
   - [Documentation](./readme.md).
   - `lib` folder.
+
+## Version 2.10.0
+
+- Implemented:
+  - `jsonwebtoken` in order to create a middleware. It verifies if who perform the request is authorized or not.
+  - `functions` folder, it contains many files that helps the controllers and routes encapsulating repetitive task.
+- Updated:
+  - [Documentation](./readme.md).
+  - `lib` folder.
