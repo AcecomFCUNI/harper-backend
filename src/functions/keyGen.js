@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import jwt from 'jsonwebtoken'
 import { mailer } from './mailer'
+import { KeysModel } from '../database/mongo/models/keys'
 
 const PORT = process.env.PORT
 const SECRET_KEY = process.env.SECRETE_KEY
@@ -14,6 +15,13 @@ const receivers = [
 const keyGen = async () => {
   try {
     const token = jwt.sign({ id: ID }, SECRET_KEY)
+    const km = new KeysModel({ key: token })
+
+    try {
+      await km.save()
+    } catch (err) {
+      console.log('Error at keyGen.js -> Saving the key.')
+    }
 
     const result = await mailer(
       'New bearer to update the database',
@@ -27,7 +35,7 @@ const keyGen = async () => {
 
     return result
   } catch (err) {
-    console.log('Error at keyGen.js')
+    console.log('Error at keyGen.js -> Generating the key with jwt.')
     console.error(err)
   }
 }

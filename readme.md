@@ -338,8 +338,8 @@ We are connected to the database!
           ```
       This method will send an email to a ACECOM and to its web development team, in order to reply as soon as possible.
 
-- Every post request requires an authorization header (it uses a bearer), so it should be supplied when a post request is performed. This is token is provided by the server, you must provide an email receiver int the `.env` file to get this token, also and ID must be provided too, in order to create a 'user'. Without this token you wont be able to perform any post request. Finally (and obviously) you need to provide the sender email and at least 4 receivers, this is because the first one is going to send the email, be aware of the email configuration (gmail is set as default, but feel free to change it), in development, the server will send an email to the first receiver, but once is deployed it will send an email to 3 different receivers.
+- Every post request requires an authorization header (it uses a bearer), so it should be supplied when a post request is performed. This is token is provided by the server (it may be one stored in the database or another one just generated), you must provide an email receiver int the `.env` file to get this token, also and ID must be provided too, in order to create a 'user'. Without this token you wont be able to perform any post request. Finally (and obviously) you need to provide the sender email and at least 4 receivers, this is because the first one is going to send the email, be aware of the email configuration (gmail is set as default, but feel free to change it), in development, the server will send an email to the first receiver, but once is deployed it will send an email to 3 different receivers.
 
 ## Authors:
 
--   **Anthony Luzquiños** - _Initial Work_ - _Database_ - _Development_ - _Documentation_ - [AnthonyLzq](https://github.com/AnthonyLzq).
+-   **Anthony Luzquiños** - _Initial Work_ - _Database_ - _Documentation_ - _Deployment_ - _Development_ - _Maintenance_ [AnthonyLzq](https://github.com/AnthonyLzq).

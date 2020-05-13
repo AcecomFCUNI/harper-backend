@@ -5,7 +5,7 @@ import { Router } from 'restify-router'
 import { applyRoutes } from './routes/routes'
 import { db } from './database/mongo/connection/index'
 
-import { keyGen } from './functions/keyGen'
+import { getKey } from './functions/getKey'
 
 const PORT = process.env.PORT
 const server = restify.createServer()
@@ -20,7 +20,9 @@ server.use(restify.plugins.bodyParser())
 
 server.listen(PORT, async () => {
   try {
-    await keyGen()
+    const result = await getKey()
+
+    console.log(result)
   } catch (err) {
     console.log('Error at index.js')
     console.error(err)
