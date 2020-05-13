@@ -35,7 +35,7 @@ class Careers {
 
   async getAll () {
     try {
-      const careers = await CareersModel.find({})
+      const careers = await CareersModel.find({}, 'code name')
 
       return careers
     } catch (err) {
@@ -49,7 +49,7 @@ class Careers {
     try {
       const career = await CareersModel.findOne(
         { code: { $eq: code } },
-        { __v: false, _id: true }
+        'code name'
       )
 
       if(!career) throw new Error("The requested career doesn't exists.")

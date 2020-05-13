@@ -1,49 +1,46 @@
+import jwt from 'jsonwebtoken'
+
 import { Router } from 'restify-router'
 import { Careers } from '../controllers/careers'
 
+import { response } from '../functions/response'
+import { ensureToken } from '../functions/ensureToken'
+import { toTitleCase } from '../functions/titleCase'
+
+const SECRETE_KEY = process.env.SECRETE_KEY
 const router = new Router()
 const c = new Careers()
 
 router.get('/careers', (req, res, next) => {
-  res.send({
-    message: 'This is the endpoint to upload the careers in the database.'
+  response(res, 200, false, {
+    message: 'This is the endpoint to upload the careers in the database'
   })
 })
 
-router.post('/careers', async (req, res, next) => {
-  const {
-    body: { args }
-  } = req
+router.post('/careers', ensureToken, async (req, res, next) => {
+  const { body: { args }, token } = req
 
-  try {
-    let result = await c.process(args)
+  jwt.verify(
+    token,
+    SECRETE_KEY,
+    async (err, data) => {
+      if(err) {
+        console.log(err)
+        response(res, 403, true, { message: toTitleCase(err.message) })
+      } else {
+        try {
+          const result = await c.process(args)
 
-    if(Array.isArray(result)) {
-      result = result.map(({ code, name }) => {
-        return {
-          code,
-          name
+          // TODO: Update status depending of the args
+          response(res, 200, false, { result })
+        } catch (err) {
+          response(res, 500, true, { message: err.message })
         }
-      })
-      res.send({
-        error: false,
-        result
-      })
-    } else
-      res.send({
-        error : false,
-        result: {
-          _id : result._id,
-          code: result.code,
-          name: result.name
-        }
-      })
-  } catch (err) {
-    res.send({
-      error  : true,
-      message: err.message
-    })
-  }
+        // TODO: learn what to do with the data
+        console.log(data)
+      }
+    }
+  )
 })
 
 export { router as Careers }

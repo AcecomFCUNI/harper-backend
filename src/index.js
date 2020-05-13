@@ -1,36 +1,31 @@
 import restify from 'restify'
-import corsMiddleware from 'restify-cors-middleware'
-
+import corsMiddleware from 'restify-cors-middleware2'
 import { Router } from 'restify-router'
-import { Home } from './routes/home'
-import { Careers } from './routes/careers'
-import { MemberStatus } from './routes/memberStatus'
-import { DataArea } from './routes/dataArea'
-import { DataMembers } from './routes/dataMembers'
-import { Projects } from './routes/projects'
-import { ContactUs } from './routes/contactUs'
 
+import { applyRoutes } from './routes/routes'
 import { db } from './database/mongo/connection/index'
+
+import { keyGen } from './functions/keyGen'
 
 const PORT = process.env.PORT
 const server = restify.createServer()
 const router = new Router()
 const cors = corsMiddleware({ origins: ['*'] })
 
-router.add('/', Home)
-router.add('/api', Careers)
-router.add('/api', MemberStatus)
-router.add('/api', DataArea)
-router.add('/api', DataMembers)
-router.add('/api', Projects)
-router.add('/api', ContactUs)
-router.applyRoutes(server)
+applyRoutes(router, server)
 
 server.pre(cors.preflight)
 server.use(cors.actual)
 server.use(restify.plugins.bodyParser())
 
-server.listen(PORT, () => {
+server.listen(PORT, async () => {
+  try {
+    await keyGen()
+  } catch (err) {
+    console.log('Error at index.js')
+    console.error(err)
+  }
+
   console.log(`Server running at port ${PORT}`)
 })
 
