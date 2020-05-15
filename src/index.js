@@ -4,13 +4,18 @@ import { Router } from 'restify-router'
 
 import { applyRoutes } from './routes/routes'
 import { db } from './database/mongo/connection/index'
-
 import { getKey } from './functions/getKey'
 
 const PORT = process.env.PORT
 const server = restify.createServer()
 const router = new Router()
-const cors = corsMiddleware({ origins: ['*'] })
+const cors = corsMiddleware({
+  allowHeaders: [
+    'Authorization',
+    'Content-Type'
+  ],
+  origins: ['*']
+})
 
 applyRoutes(router, server)
 
@@ -19,6 +24,8 @@ server.use(cors.actual)
 server.use(restify.plugins.bodyParser())
 
 server.listen(PORT, async () => {
+  console.log(`Server running at port ${PORT}`)
+
   try {
     const result = await getKey()
 
@@ -27,8 +34,6 @@ server.listen(PORT, async () => {
     console.log('Error at index.js')
     console.error(err)
   }
-
-  console.log(`Server running at port ${PORT}`)
 })
 
 db.on('error', () => {

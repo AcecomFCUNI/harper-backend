@@ -98,3 +98,11 @@
   - `index`, now it will try to generates a key, before creating a new one and delivery it to the developer or the team.
   - [Documentation](./readme.md).
   - `lib` folder.
+
+## Version 2.12.0
+
+- Implemented:
+  - Allow headers: `Authorization` and `Content-Type`.
+- Updated:
+  - [Documentation](./readme.md).
+  - `lib` folder.
