@@ -30,7 +30,7 @@ const keyGen = async () => {
         : `This bearer is ready to be used in production.\nThe new password to update the database: \n${token}`,
       (PORT === '4001')
         ? `${receivers[0]}` // To the developer
-        : `${receivers[0]}, ${receivers[1]}, ${receivers[3]}` // To the team
+        : `${receivers[0]}, ${receivers[1]}, ${receivers[2]}` // To the team
     )
 
     return result
