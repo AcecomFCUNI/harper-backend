@@ -87,3 +87,14 @@
 - Updated:
   - [Documentation](./readme.md).
   - `lib` folder.
+
+## Version 2.11.0
+
+- Implemented:
+  - `keys` model, in order to store the token used to connect with the database.
+  - `getKey` function, it obtains the key if there is someone in the database, if not, it generates a new key and send it to the developer or the team.
+- Updated:
+  - `keyGen` function, now it saves the token in the database before send it to the developer or the team.
+  - `index`, now it will try to generates a key, before creating a new one and delivery it to the developer or the team.
+  - [Documentation](./readme.md).
+  - `lib` folder.
