@@ -48,82 +48,7 @@ We are connected to the database!
 
 - There are seven endpoints implemented:
   1. Home: `/home`, it has a get method. It is just decorative.
-  2. Careers: `/api/careers`, it has a get and a post method. The get method is just decorative. The post method has three different functionalities, according to what payload you send, here are some examples:
-
-      1. To store a new career in the database:
-          ```json
-          {
-            "args": {
-              "type": "store",
-              "data": {
-                "code": "N1",
-                "name": "Física"
-              }
-            }
-          }
-          ```
-
-      2. To get all the careers from the database:
-          ```json
-          {
-            "args": {
-              "type": "getAll",
-              "data": null
-            }
-          }
-          ```
-
-      3. To get one career from the database:
-          ```json
-          {
-            "args": {
-              "type": "getOne",
-              "data": {
-                "code": "N1"
-              }
-            }
-          }
-          ```
-
-      
-
-  3. MemberStatus: `/api/memberStatus`, it has a get and a post method. The get method is just decorative. The post method has three different functionalities, according to what payload you send, here are some examples:
-
-      1. To store a new memberStatus:
-          ```json
-          {
-            "args": {
-              "type": "store",
-              "data": {
-                "name": "Regular"
-              }
-            }
-          }
-          ```
-
-      2. To get all the memberStatus:
-          ```json
-          {
-            "args": {
-              "type": "getAll",
-              "data": null
-            }
-          }
-          ```
-
-      3. To get one of the memberStatus:
-          ```json
-          {
-            "args": {
-              "type": "getOne",
-              "data": {
-                "name": "Regular"
-              }
-            }
-          }
-          ```
-
-  4. DataArea: `/api/dataArea`, it has a get and a post method. The get method is just decorative. The post method has four different functionalities, according to what payload you send, here are some examples:
+  2. Areas: `/api/areas`, it has a get and a post method. The get method is just decorative. The post method has four different functionalities, according to what payload you send, here are some examples:
 
       1. To store a new area:
           ```json
@@ -175,7 +100,44 @@ We are connected to the database!
           }
           ```
 
-  5. DataArea: `/api/dataMembers`, it has a get and a post method. The get method is just decorative. The post method has five different functionalities, according to what payload you send, here are some examples:
+  3. Careers: `/api/careers`, it has a get and a post method. The get method is just decorative. The post method has three different functionalities, according to what payload you send, here are some examples:
+
+      1. To store a new career in the database:
+          ```json
+          {
+            "args": {
+              "type": "store",
+              "data": {
+                "code": "N1",
+                "name": "Física"
+              }
+            }
+          }
+          ```
+
+      2. To get all the careers from the database:
+          ```json
+          {
+            "args": {
+              "type": "getAll",
+              "data": null
+            }
+          }
+          ```
+
+      3. To get one career from the database:
+          ```json
+          {
+            "args": {
+              "type": "getOne",
+              "data": {
+                "code": "N1"
+              }
+            }
+          }
+          ```
+
+  4. Members: `/api/members`, it has a get and a post method. The get method is just decorative. The post method has five different functionalities, according to what payload you send, here are some examples:
 
       1. To store a new member:
           ```json
@@ -259,7 +221,7 @@ We are connected to the database!
           ```
           All the parameters shown before are optional, except the current code (code).
 
-  6. Projects: `/api/projects`, it has a get and a post method. The get method is just decorative. The post method has four different functionalities, according to what payload you send, here are some examples:
+  5. Projects: `/api/projects`, it has a get and a post method. The get method is just decorative. The post method has four different functionalities, according to what payload you send, here are some examples:
 
       1. To store a new project:
           ```json
@@ -306,7 +268,7 @@ We are connected to the database!
             "args": {
               "type": "update",
               "data": {
-                "area": "New area name",
+                "area": "Area name",
                 "description": "New project description",
                 "name": "Current project name",
                 "newName": "New project name",
@@ -319,6 +281,42 @@ We are connected to the database!
           ```
           All the parameters shown before are optional, except the current name (name).
 
+  6. Status: `/api/status`, it has a get and a post method. The get method is just decorative. The post method has three different functionalities, according to what payload you send, here are some examples:
+
+      1. To store a new status:
+          ```json
+          {
+            "args": {
+              "type": "store",
+              "data": {
+                "name": "Regular"
+              }
+            }
+          }
+          ```
+
+      2. To get all the status:
+          ```json
+          {
+            "args": {
+              "type": "getAll",
+              "data": null
+            }
+          }
+          ```
+
+      3. To get one of the status:
+          ```json
+          {
+            "args": {
+              "type": "getOne",
+              "data": {
+                "name": "Regular"
+              }
+            }
+          }
+          ```
+
   7. Contact us: `/api/contactUs`:  it has a get and a post method. The get method is just decorative. The post method has one functionality, here is the payload:
 
       1. To send a mail to contact ACECOM:
@@ -329,7 +327,7 @@ We are connected to the database!
               "data": {
                 "lastName": "Person last name",
                 "mail": "person@example.com",
-                "messgage": "Bla bla bla...",
+                "message": "Bla bla bla...",
                 "name": "Person name",
                 "subject": "Mail subject"
               }

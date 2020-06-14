@@ -106,3 +106,8 @@
 - Updated:
   - [Documentation](./readme.md).
   - `lib` folder.
+
+## Version 3.0.0
+
+- Implemented:
+  - Refactorized version of the project, now it is using [`TypeScript`](https://www.typescriptlang.org/).
