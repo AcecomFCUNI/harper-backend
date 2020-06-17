@@ -62,7 +62,7 @@
 
 - Implemented:
   - `getMembersPerArea` method, to return the members per area.
-  - Now, the content is populated, and neither *_id* nor *__v* are delivered to the front.
+  - Now, the content is populated, and neither _\_id_ nor _\_\_v_ are delivered to the front.
 
 ## Version 2.8.0
 
@@ -106,3 +106,8 @@
 - Updated:
   - [Documentation](./readme.md).
   - `lib` folder.
+
+## Version 3.0.0
+
+- Implemented:
+  - Refactorized version of the project, now it is using [`TypeScript`](https://www.typescriptlang.org/).
