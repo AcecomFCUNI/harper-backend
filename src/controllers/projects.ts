@@ -12,6 +12,7 @@ class Projects {
     this._args = args
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   public async process (type: string) {
     const { data } = this._args
     let result

@@ -16,7 +16,7 @@ module.exports = {
     project    : './tsconfig.json',
     sourceType : 'module'
   },
-  plugins: ['@typescript-eslint', 'typescript-sort-keys'],
+  plugins: ['@typescript-eslint', 'typescript-sort-keys', 'sort-keys-fix'],
   rules: {
     '@typescript-eslint/camelcase'        : 'off',
     '@typescript-eslint/naming-convention': [
@@ -94,6 +94,8 @@ module.exports = {
     'prefer-const'               : 'error',
     radix                        : ['error', 'as-needed'],
     semi                         : [2, 'never'],
+    'sort-keys'                  : 'error',
+    'sort-keys-fix/sort-keys-fix': 'warn',
     'space-before-function-paren': [
       'error',
       {

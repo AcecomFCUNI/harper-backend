@@ -13,6 +13,7 @@ class DataMembers {
     this._args = args
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   async process (type: string) {
     const { data } = this._args
     let result
@@ -54,7 +55,6 @@ class DataMembers {
       status
     } = args
 
-    // eslint-disable-next-line max-len
     if (
       !area ||
       !birthday ||
@@ -136,9 +136,7 @@ class DataMembers {
     }
   }
 
-  private async _getMembersPerArea (
-    args: DtoMembers['data']
-  ): Promise<DtoMembers['data'][]> {
+  private async _getMembersPerArea (args: DtoMembers['data']): Promise<DtoMembers['data'][]> {
     const { area } = args
 
     try {
@@ -209,7 +207,7 @@ class DataMembers {
     }
   }
 
-  private async _update (args: DtoMembers['data']) {
+  private async _update (args: DtoMembers['data']): Promise<IMembers | null> {
     const {
       area,
       birthday,

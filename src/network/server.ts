@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import morgan from 'morgan'
 import { applyRoutes } from './routes'
+import { birthdayChecker } from '../functions/birthday/birthday'
 // import { getKey } from './functions/getKey'
 // try {
 //   const result = await getKey()
@@ -85,6 +86,7 @@ class Server {
     )
     try {
       this._mongo()
+      birthdayChecker.start()
     } catch (error) {
       console.error(error)
     }

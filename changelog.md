@@ -111,3 +111,8 @@
 
 - Implemented:
   - Refactorized version of the project, now it is using [`TypeScript`](https://www.typescriptlang.org/).
+
+## Version 3.1.0
+
+- Implemented:
+  - Birthday greeting for each member.
