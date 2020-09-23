@@ -116,3 +116,11 @@
 
 - Implemented:
   - Birthday greeting for each member.
+
+## Version 3.2.0
+
+- Implemented:
+  - Updated dependencies.
+
+- Pending:
+  - To fix birthday greeting for each member.

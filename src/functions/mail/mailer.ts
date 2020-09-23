@@ -7,7 +7,7 @@ const mailer = async (
   subject: string,
   text   : string,
   to     : string,
-  html?   : string
+  html?  : string
 ): Promise<void> => {
   const transporter = nodemailer.createTransport({
     auth: {
