@@ -1,6 +1,6 @@
 {
   "name": "harper-backend",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "A refactorized version of Harper",
   "scripts": {
     "build": "webpack --mode production",
