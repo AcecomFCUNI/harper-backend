@@ -23,7 +23,7 @@ class Server {
   }
 
   private _config () {
-    this.app.set('port', process.env.PORT as string)
+    this.app.set('port', process.env.PORT as string || '3000')
     this.app.use(morgan('dev'))
     this.app.use(express.json())
     this.app.use(express.urlencoded({ extended: false }))

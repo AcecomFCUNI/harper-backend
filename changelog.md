@@ -133,3 +133,9 @@
 
 - Implemented:
   - Fixed birthday greeting for each member.
+
+## Version 3.4.0
+
+- Implemented:
+  - Birthday greeting report.
+  - Default port.

@@ -30,14 +30,23 @@ const birthdayChecker = new CronJob('00 00 5 * * *', async () => {
     return memberBirthday === `${month},${day}`
   })
 
-  const result = await mailer(
-    '¡Feliz cumpleaños!',
-    `De parte de ACECOM, deseamos que pases un lindo día :)
-¡Feliz cumpleaños ${chosenMember[0].name.split(' ')[0]}!`,
-    `${chosenMember[0].email[0]}`
-  )
-
-  console.log(result)
+  if (chosenMember.length !== 0) {
+    await mailer(
+      '¡Feliz cumpleaños!',
+      `De parte de ACECOM, deseamos que pases un lindo día :)\n¡Feliz cumpleaños ${chosenMember[0].name.split(' ')[0]}!`,
+      chosenMember[0].email[0]
+    )
+    await mailer(
+      'Birthday report',
+      `Today was ${chosenMember[0].name}'s birthday`,
+      process.env.EMAIL_RECEIVER_1 as string
+    )
+  } else
+    await mailer(
+      'Birthday report',
+      'Today there was no birthday',
+      process.env.EMAIL_RECEIVER_1 as string
+    )
 })
 
 export { birthdayChecker }
