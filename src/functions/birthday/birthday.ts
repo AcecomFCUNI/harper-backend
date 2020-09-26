@@ -2,8 +2,8 @@ import { CronJob } from 'cron'
 import { mailer } from '../mail/mailer'
 import { MembersModel } from '../../models/members'
 
-const birthdayChecker = new CronJob('00 10 8 * * *', async () => {
-  const currentDate = new Date(new Date().getTime())// - 24*60*60*1000)
+const birthdayChecker = new CronJob('00 00 5 * * *', async () => {
+  const currentDate = new Date(new Date().getTime())
   let day: string
   let month: string
 
@@ -18,7 +18,6 @@ const birthdayChecker = new CronJob('00 10 8 * * *', async () => {
     day = `0${currentDate.getUTCDate()}`
 
   const chosenMembers = await MembersModel.find({}, '-_id name birthday email')
-  console.log(chosenMembers)
 
   const chosenMember = chosenMembers.filter(member => {
     const memberBirthday = member.birthday
@@ -30,8 +29,6 @@ const birthdayChecker = new CronJob('00 10 8 * * *', async () => {
 
     return memberBirthday === `${month},${day}`
   })
-
-  console.log(chosenMember)
 
   const result = await mailer(
     '¡Feliz cumpleaños!',

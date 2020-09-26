@@ -128,3 +128,8 @@
 ## Version 3.2.1
 
 - Testing fix birthday greeting for each member.
+
+## Version 3.3.0
+
+- Implemented:
+  - Fixed birthday greeting for each member.
