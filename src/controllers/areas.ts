@@ -11,22 +11,18 @@ class Areas {
 
   public async process (type: string): Promise<IAreas | IAreas[] | undefined> {
     const { data } = this._args
-    let result
     switch (type) {
       case 'store':
-        result = await this._store(data)
-        break
+        return this._store(data)
       case 'getAll':
-        result = await this._getAll()
-        break
+        return this._getAll()
       case 'getOne':
-        result = await this._getOne(data)
-        break
+        return this._getOne(data)
       case 'update':
-        result = await this._update(data)
+        return this._update(data)
+      default:
+        return undefined
     }
-
-    return result
   }
 
   private async _store (args: DtoAreas['data']): Promise<IAreas> {

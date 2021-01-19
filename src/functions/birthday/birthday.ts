@@ -2,7 +2,7 @@ import { CronJob } from 'cron'
 import { mailer } from '../mail/mailer'
 import { MembersModel } from '../../models/members'
 
-const birthdayChecker = new CronJob('00 00 5 * * *', async () => {
+const birthdayChecker = new CronJob('00 00 5 * * *', async (): Promise<void> => {
   const currentDate = new Date(new Date().getTime())
   let day: string
   let month: string

@@ -1,5 +1,4 @@
 import { Document, model, Schema } from 'mongoose'
-import uniqueValidator from 'mongoose-unique-validator'
 
 interface IAreas extends Document {
   abstract: string,
@@ -29,8 +28,6 @@ const Areas = new Schema(
     }
   }
 )
-
-Areas.plugin(uniqueValidator)
 
 const AreasModel = model<IAreas>('areas', Areas)
 

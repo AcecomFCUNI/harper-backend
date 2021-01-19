@@ -139,3 +139,11 @@
 - Implemented:
   - Birthday greeting report.
   - Default port.
+
+## Version 3.5.0
+
+- Implemented:
+  - New `eslint` rules.
+  - Removed `mongoose-unique-validator` package.
+- Updated:
+  - Dependencies.

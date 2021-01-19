@@ -1,5 +1,4 @@
 import { Document, model, Schema } from 'mongoose'
-import uniqueValidator from 'mongoose-unique-validator'
 
 interface IStatus extends Document {
   name: string
@@ -14,8 +13,6 @@ const Status = new Schema(
     }
   }
 )
-
-Status.plugin(uniqueValidator)
 
 const StatusModel = model<IStatus>('status', Status)
 

@@ -1,5 +1,4 @@
 import { Document, model, Schema } from 'mongoose'
-import uniqueValidator from 'mongoose-unique-validator'
 
 interface ICareers extends Document {
   code: string,
@@ -20,8 +19,6 @@ const Careers = new Schema(
     }
   }
 )
-
-Careers.plugin(uniqueValidator)
 
 const CareersModel = model<ICareers>('careers', Careers)
 

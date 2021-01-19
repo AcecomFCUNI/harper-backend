@@ -1,5 +1,4 @@
 import { Document, model, Schema } from 'mongoose'
-import uniqueValidator from 'mongoose-unique-validator'
 
 import { IAreas } from './areas'
 import { IMembers } from './members'
@@ -44,8 +43,6 @@ const Projects = new Schema(
     }
   }
 )
-
-Projects.plugin(uniqueValidator)
 
 const ProjectsModel = model<IProjects>('projects', Projects)
 

@@ -1,5 +1,4 @@
 import { Document, model, Schema } from 'mongoose'
-import uniqueValidator from 'mongoose-unique-validator'
 
 interface IKeys extends Document {
   createdAt: Date,
@@ -23,13 +22,11 @@ const Keys = new Schema(
       unique: true
     },
     purpose: {
-      type   : String,
-      default: 'dev'
+      default: 'dev',
+      type   : String
     }
   }
 )
-
-Keys.plugin(uniqueValidator)
 
 const KeysModel = model<IKeys>('keys', Keys)
 

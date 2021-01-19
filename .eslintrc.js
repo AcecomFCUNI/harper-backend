@@ -7,7 +7,7 @@ module.exports = {
     'prettier',
     'prettier/@typescript-eslint'
   ],
-  parser: '@typescript-eslint/parser',
+  parser       : '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       modules: true
@@ -17,13 +17,19 @@ module.exports = {
     sourceType : 'module'
   },
   plugins: ['@typescript-eslint', 'typescript-sort-keys', 'sort-keys-fix'],
-  rules: {
-    '@typescript-eslint/camelcase'        : 'off',
-    '@typescript-eslint/naming-convention': [
+  rules  : {
+    '@typescript-eslint/camelcase'                  : 'off',
+    '@typescript-eslint/lines-between-class-members': 'off',
+    '@typescript-eslint/naming-convention'          : [
       'error',
       {
-        selector: 'default',
-        format  : ['camelCase']
+        selector: 'variable',
+        format  : ['camelCase', 'PascalCase', 'UPPER_CASE']
+      },
+      {
+        selector         : 'parameter',
+        format           : ['camelCase'],
+        leadingUnderscore: 'allow'
       },
       {
         selector         : 'memberLike',
@@ -32,39 +38,24 @@ module.exports = {
         leadingUnderscore: 'require'
       },
       {
-        selector         : 'parameter',
-        format           : ['camelCase'],
-        leadingUnderscore: 'allow'
-      },
-      {
-        selector         : 'property',
-        format           : ['camelCase', 'UPPER_CASE'],
-        leadingUnderscore: 'allow'
-      },
-      {
         selector: 'typeLike',
         format  : ['PascalCase']
-      },
-      {
-        selector: 'variable',
-        format  : ['camelCase', 'PascalCase', 'UPPER_CASE']
       }
     ],
-    '@typescript-eslint/semi'     : ['error', 'never'],
-    'arrow-parens'                : ['error', 'as-needed'],
-    'comma-dangle'                : ['error', 'never'],
-    curly                         : ['error', 'multi'],
-    'default-case'                : 'off',
+    '@typescript-eslint/semi'          : ['error', 'never'],
+    'arrow-parens'                     : ['error', 'as-needed'],
+    'comma-dangle'                     : ['error', 'never'],
+    curly                              : ['error', 'multi'],
+    'eol-last'                         : ['error', 'always'],
+    'import/no-extraneous-dependencies': [
+      'error', 
+      {
+        'devDependencies': true
+      }
+    ],
     'import/prefer-default-export': 'off',
     'key-spacing'                 : [2, { align: 'colon' }],
     'keyword-spacing'             : ['error', { after: true, before: true }],
-    'lines-between-class-members' : [
-      'error',
-      'always',
-      {
-        exceptAfterSingleLine: true
-      }
-    ],
     'max-len': [
       'error',
       {
