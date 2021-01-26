@@ -147,3 +147,11 @@
   - Removed `mongoose-unique-validator` package.
 - Updated:
   - Dependencies.
+
+## Version 3.6.0
+
+- Implemented:
+  - New `eslint` rules.
+  - Removed `mongoose-unique-validator` package.
+- Updated:
+  - Dependencies.
